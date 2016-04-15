@@ -16,11 +16,17 @@
 
     // This is a public method the user can call if they've
     // changed our dimensions with CSS.
-    resize: function() {
+    resize: function(reflow) {
+      
+      // Allow reflow to be turned off so the chart reanimates
+      // on resize
+      var shouldReflow = !reflow ? false : true;
+      
       if (this.chart) {
         this.chart.resize();
-        this.chart.render(true);
+        this.chart.render(shouldReflow);
       }
+      
     }
 
   };
